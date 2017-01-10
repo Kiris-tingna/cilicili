@@ -1,0 +1,47 @@
+// font style
+@left-side-width: 3px;
+@left-side-color: #3c8dbc;
+@left-bg: #1e282c;
+@left-fg: #2c3b41;
+@left-text-bg: #8aa4af;
+@left-text-fg: #ffffff;
+
+body {
+  font-family: MicroSoft Yahei, Sans-Serif;
+}
+
+.fa-btn {
+  margin-right: 6px;
+}
+
+.sidebar-nav {
+  //active
+  li.sidebar-active {
+     a {
+       color: @left-text-fg;
+       background: @left-bg;
+       border-left-color: @left-side-color;
+    }
+  }
+
+  background-color: @left-bg;
+  // li 布局
+  li {
+    & > a {
+      .fa{
+        width: 20px;
+      }
+      color: @left-text-bg;
+      // li 左边颜色
+      border-left: @left-side-width solid transparent;
+    }
+
+    &:hover > a {
+      color: @left-text-fg;
+      background: @left-fg;
+      border-left-color: @left-side-color;
+    }
+  }
+}
+
+

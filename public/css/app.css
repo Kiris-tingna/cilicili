@@ -1,0 +1,28 @@
+body {
+  font-family: MicroSoft Yahei, Sans-Serif;
+}
+.fa-btn {
+  margin-right: 6px;
+}
+.sidebar-nav {
+  background-color: #1e282c;
+}
+.sidebar-nav li.sidebar-active a {
+  color: #ffffff;
+  background: #1e282c;
+  border-left-color: #3c8dbc;
+}
+.sidebar-nav li > a {
+  color: #8aa4af;
+  border-left: 3px solid transparent;
+}
+.sidebar-nav li > a .fa {
+  width: 20px;
+}
+.sidebar-nav li:hover > a {
+  color: #ffffff;
+  background: #2c3b41;
+  border-left-color: #3c8dbc;
+}
+
+/*# sourceMappingURL=app.css.map */

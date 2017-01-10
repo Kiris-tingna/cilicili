@@ -1,0 +1,104 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: kiristingna
+ * Date: 2017/1/9
+ * Time: 18:21
+ */
+
+namespace App\Repositories;
+use Goutte\Client;
+use GuzzleHttp\Client as GuzzleClient;
+use Carbon\Carbon;
+use App\Special;
+use App\Video;
+
+class SnatchRepositories
+{
+    protected $client;
+    protected $crawler;
+    public $Bili;
+    public function __construct(Client $goutte, GuzzleClient $guzzle)
+    {
+        $this->client = $goutte;
+        $this->client->setClient($guzzle);
+    }
+
+    public function snatch($url)
+    {
+        $this->crawler = $this->client->request('GET', $url);
+        $this->registerYKSpider();
+        return true;
+    }
+    public function registerYKSpider()
+    {
+        /**
+         * time part
+         */
+        $this->BiliBiliTime($this->Bili);
+        /**
+         * special part
+         */
+        $this->BiliBiliAnimate($this->Bili);
+        /**
+         * video part
+         */
+        $this->BiliBiliVideos($this->Bili);
+    }
+
+    public function BiliBiliTime(&$singleton)
+    {
+        $time = $this->crawler->filter('.info-update span')->eq(0)->text();
+        $reg = '/\d+/';
+        $timeMatch = [];
+
+        if(! preg_match_all($reg, $time, $timeMatch))
+        {
+            $timeMatch[0][0] = '0000';
+            $timeMatch[0][1] = '00';
+        }
+
+        $singleton['year'] = $timeMatch[0][0];
+        $singleton['month'] = $timeMatch[0][1];
+
+        return true;
+    }
+
+    public function BiliBiliAnimate(&$singleton)
+    {
+        $singleton['id'] = Special::firstOrCreate([
+            'name'      =>  $this->crawler->filter('.info-title')->attr('title'),
+            'area'      =>  '日本',
+            'picture_uri'=> $this->crawler->filter('.bangumi-preview img')->attr('src'),
+            'description'=> $this->crawler->filter('.info-desc')->text(),
+            'year'      =>  $singleton['year'],
+            'month'     =>  $singleton['month'],
+            'weekday'   =>  6,
+            'state'     =>  $this->crawler->filter('.info-update span')->eq(1)->text(),
+            'played'    =>  0,
+            'commented' =>  0,
+            'liked'     =>  0
+        ])->id;
+
+        return true;
+    }
+
+    public function BiliBiliVideos(&$singleton)
+    {
+        $id = $singleton['id'];
+        $this->crawler->filter('.complete-list .v1-bangumi-list-part-child>a')->each(function($node , $i) use ($id) {
+            $vid = Video::insertGetId(array(
+                'episode'=> $i+1,
+                'name'  => $node->attr('title'),
+                'special_id' => $id,
+                'picture_uri'=>$node->filter('.img-wrp img')->attr('src'),
+                'played'    => 0,
+                'commented' => 0,
+                'liked'     =>  0,
+                'created_at' => Carbon::now()
+            ));
+            Video::where('id', $vid)->update(array('av' => 'av'.str_pad($vid, 5 ,"0",STR_PAD_LEFT)));
+        });
+        Special::where('id', $id)->update(array('particles' => Video::where('special_id', $id)->count()));
+    }
+}
