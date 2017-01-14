@@ -27,7 +27,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/index') }}">
                     Laravel
                 </a>
             </div>
@@ -35,9 +35,11 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                    <li><a href="{{ url('/animate/4') }}">合集</a></li>
+                    <li><a href="{{ url('/animate/4') }}">合集?</a></li>
                     <li><a href="{{ url('/search') }}">搜索</a></li>
+
+                    <li><a href="{{ url('/home') }}">用户中心</a></li>
+                    <li><a href="{{ url('/cate') }}">控制</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -64,6 +66,7 @@
 
     @yield('content')
 
+    @include('layouts.footer')
     <!-- JavaScripts libs-->
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/jquery.cookie.js') }}"></script>

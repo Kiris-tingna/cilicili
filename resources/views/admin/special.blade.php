@@ -15,7 +15,7 @@
                 <td>ID</td>
                 <td>名称</td>
                 <td>所属栏目</td>
-                <td>操作</td>
+                <td>栏目操作</td>
             </tr>
             </thead>
             <tbody>
@@ -36,8 +36,8 @@
                                 <option value="{{ $cate->id }}">{{ $cate->band }}</option>
                             @endforeach
                         </select>
-                        <button class="btn btn-info btn-sm la-admin-cate" data-id="{{ $cate->id }}" data-sid="{{ $spe->id }}">增加栏目</button>
-                        <button class="btn btn-danger btn-sm la-admin-sync" data-id="{{ $cate->id }}" data-sid="{{ $spe->id }}">更新栏目</button>
+                        <button class="btn btn-info btn-sm la-admin-cate" data-id="{{ $cates[0]->id }}" data-sid="{{ $spe->id }}">增加栏目</button>
+                        <button class="btn btn-danger btn-sm la-admin-sync" data-id="{{ $cates[0]->id }}" data-sid="{{ $spe->id }}">更新栏目</button>
                     </td>
                 </tr>
             @endforeach

@@ -31,7 +31,7 @@ class SpecialController extends Controller
 
     public function getIndex()
     {
-        $specials = $this->special->allPaginated(4);
+        $specials = $this->special->allPaginated(10);
         $cates = $this->cate->all();
         return view('admin.special', compact('specials', 'cates'));
     }

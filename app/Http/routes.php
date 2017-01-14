@@ -10,10 +10,14 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('/index', 'FrontController@index');
+Route::get('/animate/{id}', 'FrontController@specials')->where('id', '[0-9]+'); // 合集专辑
+Route::get('/videos/{avid}', 'FrontController@videos')->where('avid', 'av[0-9]+');  // 分集视频
+Route::get('/search', 'FrontController@search');  // 搜索
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('/like/a/', 'ApiController@alike');  // 喜欢
+Route::post('/like/v/', 'ApiController@vlike');  // 喜欢
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +29,6 @@ Route::get('/', function () {
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-
 Route::group(['middleware' => ['web']], function () {
     // auth system routes
     Route::auth();
@@ -34,16 +37,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/home', 'HomeController@index');// constotur 使用了auth中间件
     Route::any('/upload', 'KpTelloController@upload');
     Route::get('/queue', 'KpTelloController@queue');
-
-
-    Route::get('/animate/{id}', 'HomeController@specials')->where('id', '[0-9]+'); // 合集专辑
-    Route::get('/videos/{avid}', 'HomeController@videos')->where('avid', 'av[0-9]+');  // 分集视频
-    Route::get('/search', 'HomeController@search');  // 搜索
-
-    Route::post('/like/a/', 'HomeController@alike');  // 点赞
-    Route::post('/like/v/', 'HomeController@vlike');  // 点赞
-
-
 });
 
 

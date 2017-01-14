@@ -104,4 +104,8 @@ class CategoryController extends Controller
         return redirect('/cate/index');
     }
 
+    public function getMake()
+    {
+        $this->cate->Move(2, 1);
+    }
 }

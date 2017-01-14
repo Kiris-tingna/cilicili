@@ -24,7 +24,10 @@ class CategoryRepository extends Repository
     {
         return Category::class;
     }
-
+    public function IndexSampleWithCate()
+    {
+        return $this->model->withDepth()->having('depth', '=', 1)->get();
+    }
     /**
      * @return mixed
      */
@@ -88,5 +91,12 @@ class CategoryRepository extends Repository
     public function AttachSpecial($id, $sid)
     {
         return $this->model->find($id)->specials()->attach($sid);
+    }
+
+    public function Move($cid, $pid)
+    {
+        $node = $this->model->find($cid);
+        $node->parent_id = $pid;
+        return $node->save();
     }
 }

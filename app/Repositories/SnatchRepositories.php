@@ -9,6 +9,7 @@
 namespace App\Repositories;
 use Goutte\Client;
 use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Pool;
 use Carbon\Carbon;
 use App\Special;
 use App\Video;
@@ -17,21 +18,51 @@ class SnatchRepositories
 {
     protected $client;
     protected $crawler;
+    protected $guzzle;
     public $Bili;
+//    protected $users = ['1'=> 'zhengjinghua', '2'=>'NauxLiu', '3'=>'CycloneAxe', '4'=>'appleboy','5'=>'Aufree'];
+//    public $res;
     public function __construct(Client $goutte, GuzzleClient $guzzle)
     {
         $this->client = $goutte;
+        $this->guzzle = $guzzle;
         $this->client->setClient($guzzle);
     }
 
     public function snatch($url)
     {
-        $this->crawler = $this->client->request('GET', $url);
-        $this->registerYKSpider();
+//         $r = function (){
+//            foreach ($this->users as $key => $user) {
+//
+//                $uri = 'https://api.github.com/users/' . $user;
+//                yield function() use ($uri) {
+//                    return $this->guzzle->getAsync($uri);
+//                };
+//            }
+//        };
+//
+//        $pool = new Pool($this->guzzle, $r(), [
+//            'concurrency' => 2 ,
+//            'fulfilled'   => function ($response, $index){
+//                $res = json_decode($response->getBody()->getContents());
+//                $this->res[] = $res;
+//            },
+//            'rejected' => function ($reason, $index){
+//                $this->res[] = $reason;
+//            },
+//        ]);
+//
+//        $pool->promise()->wait();
+//        dump($this->res);
+//        die();
+//        return true;
+        $this->registerBLSpider($url);
         return true;
     }
-    public function registerYKSpider()
+
+    public function registerBLSpider($url)
     {
+        $this->crawler = $this->client->request('GET', $url);
         /**
          * time part
          */
@@ -44,6 +75,8 @@ class SnatchRepositories
          * video part
          */
         $this->BiliBiliVideos($this->Bili);
+
+        return true;
     }
 
     public function BiliBiliTime(&$singleton)
@@ -100,5 +133,7 @@ class SnatchRepositories
             Video::where('id', $vid)->update(array('av' => 'av'.str_pad($vid, 5 ,"0",STR_PAD_LEFT)));
         });
         Special::where('id', $id)->update(array('particles' => Video::where('special_id', $id)->count()));
+
+        return true;
     }
 }
