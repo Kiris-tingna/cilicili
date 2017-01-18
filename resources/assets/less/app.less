@@ -1,10 +1,10 @@
 // font style
 @left-side-width: 3px;
 @left-side-color: #3c8dbc;
-@left-bg: #1e282c;
-@left-fg: #2c3b41;
-@left-text-bg: #8aa4af;
-@left-text-fg: #ffffff;
+@left-bg: #ebebeb;
+@left-fg: #f9f9f9;
+@left-text-bg: #333333;
+@left-text-fg: #999999;
 
 
 // bg-color
@@ -85,7 +85,7 @@ body {
     }
   }
   p{
-     margin: 0px;
+     margin: 0;
   }
   span{
     display: inline-block;
@@ -126,9 +126,12 @@ body {
 {
   padding-left: 15px;
   width: 100%;
+  clear: both;
+  overflow: hidden;
+  margin-right: -20px;
   .la-idata-item {
-    width: 130px;
-    margin-right: 20px;
+    width: 120px;
+    margin-right: 18px;
     margin-bottom: 10px;
 
     height: 205px;
@@ -142,7 +145,7 @@ body {
     }
 
     .la-idata-image{
-      max-width: auto;
+      width: auto;
       height: 100%;
     }
     p{
@@ -164,7 +167,38 @@ body {
 .fa-btn {
   margin-right: 6px;
 }
-
+// ---------------- timeboard ---------------
+.la-time {
+  min-width: 260px;
+}
+.la-timeboard {
+  line-height: 30px;
+  .la-timeboard-nav{
+    font-size: 12px;
+    width: 37px;
+    a{
+      padding: 2px 4px;
+      border-radius: 0;
+    }
+  }
+}
+.la-timeboard-content {
+  list-style-type: none;
+  padding: 10px 5px;
+  li{
+    position: relative;
+    line-height: 30px;
+    font-size: 12px;
+    color: #555555;
+  }
+  .la-timeboard-desc{
+    position: absolute;
+    display: block;
+    color: @whole-txt-mute;
+    top: 0;
+    right: 0;
+  }
+}
 // ----------------- video ------------------
 .la-player-body {
   width: 100%;
@@ -238,34 +272,7 @@ body {
   }
 }
 // --------------------------- admin ---------------------
-.sidebar-nav {
-  //active
-  li.sidebar-active {
-     a {
-       color: @left-text-fg;
-       background: @left-bg;
-       border-left-color: @left-side-color;
-    }
-  }
-
-  background-color: @left-bg;
-  // li 布局
-  li {
-    & > a {
-      .fa{
-        width: 20px;
-      }
-      color: @left-text-bg;
-      // li 左边颜色
-      border-left: @left-side-width solid transparent;
-    }
-
-    &:hover > a {
-      color: @left-text-fg;
-      background: @left-fg;
-      border-left-color: @left-side-color;
-    }
-  }
+.la-admin-select{
+  display: inline-block;
+  width: 40%;
 }
-
-

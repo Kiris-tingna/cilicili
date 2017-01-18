@@ -56,4 +56,41 @@ class SpecialRepository extends Repository
     {
         return $this->model->find($id)->categories()->sync($cid);
     }
+
+    public function ListAllByDay()
+    {
+        $result = [];
+        for($weekday = 1; $weekday <= 7; $weekday++)
+        {
+            switch ($weekday) {
+                case 1:
+                    $transform = 'monday';
+                    break;
+                case 2:
+                    $transform = 'tuesday';
+                    break;
+                case 3:
+                    $transform = 'wednesday';
+                    break;
+                case 4:
+                    $transform = 'thursday';
+                    break;
+                case 5:
+                    $transform = 'friday';
+                    break;
+                case 6:
+                    $transform = 'saturday';
+                    break;
+                case 7:
+                    $transform = 'sunday';
+                    break;
+                default:
+                    $transform = 'error occured';
+                    break;
+            }
+            $result[$transform] = $this->model->where('weekday', $weekday)->orderBy('created_at','desc')->limit(10)->get();
+        }
+
+        return $result;
+    }
 }

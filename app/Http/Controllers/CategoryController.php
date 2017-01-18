@@ -78,7 +78,7 @@ class CategoryController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function postRoot(Request $request)
+    public function getRoot(Request $request)
     {
         $id = $request->get('id');
 
@@ -108,4 +108,5 @@ class CategoryController extends Controller
     {
         $this->cate->Move(2, 1);
     }
+
 }

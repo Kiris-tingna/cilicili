@@ -7,7 +7,7 @@ $(function () {
     /**
      * ------------------ init part ------------------
      */
-    $('.date-picker').datepicker({});
+    // $('.date-picker').datepicker({});
 
     /**
      * ------------------ url functions part ------------------

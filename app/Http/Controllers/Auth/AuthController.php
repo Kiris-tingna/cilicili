@@ -38,7 +38,14 @@ class AuthController extends Controller
     public function __construct()
     {
         // 设置一些排除路由
-        $this->middleware('guest', ['except' => 'logout']);
+        $this->middleware('guest', ['except' => [
+            'logout',
+            'index',
+            'animate',
+            'videos',
+            'search',
+            'like',
+        ]]);
     }
 
     /**

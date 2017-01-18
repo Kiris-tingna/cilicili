@@ -14,7 +14,7 @@ class HtmlServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        FormBuilder::component('bsText', 'components.form.text', ['name', 'value' => '', 'attributes'=>[]]);
+        FormBuilder::component('bsText', 'components.form.text', ['label'=>'', 'name', 'value' => '', 'attributes'=>[]]);
         FormBuilder::component('bsDate', 'components.form.date', ['name', 'value'=>'', 'attributes'=>[]]);
         HtmlBuilder::component('breadcrumb', 'components.html.breadcrumb', ['parent', 'current']);
     }
