@@ -8,7 +8,8 @@
             <div class="row">
                 <div class="col-md-9">
                     <h3>{{$cate->band}}
-                        <small>{{$cate->slug}}</small>
+                        <small>{{ $cate->slug }}</small>
+                        <a href="{{ url('/list', $cate->id) }}">更多</a>
                     </h3>
                     <ul class="la-idata-container">
                         @foreach($cate->specials as $sp)

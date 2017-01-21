@@ -14,7 +14,8 @@
         "fabpot/goutte": "^3.2",
         "laravelcollective/html": "5.2.*",
         "predis/predis": "*",
-        "kalnoy/nestedset": "^4.2"
+        "kalnoy/nestedset": "^4.2",
+        "dingo/api": "1.0.x@dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

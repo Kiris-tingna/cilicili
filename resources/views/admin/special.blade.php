@@ -49,7 +49,7 @@
                                     </button>
                                 </td>
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-primary">同步合集</a>
+                                    <a href="{{ url('/snatch/sync', $spe->id) }}" class="btn btn-sm btn-primary">同步合集</a>
                                 </td>
                             </tr>
                         @endforeach

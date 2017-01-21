@@ -31,7 +31,7 @@
                     </p>
                 </div>
                 <p>特点：{{ $special->info }}</p>
-                <p class="la-ani-update">于{{ $special->updated_at }}更新</p>
+                <p class="la-ani-update">于{{ $special->created_at->diffForHumans() }}创建</p>
 
                 <p class="la-ani-into">简介：{{ $special->description }}</p>
 

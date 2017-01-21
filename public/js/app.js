@@ -13,8 +13,8 @@ $(function () {
      * ------------------ url functions part ------------------
      */
     var urls = {
-        LIKE_ANIMATE: '/like/a/',
-        LIKE_VIDEO: '/like/v/',
+        LIKE_ANIMATE: '/api/alike/',
+        LIKE_VIDEO: '/api/vlike/',
         CATE_INSERT: '/special/insert',
         CATE_GET: '/special/category',
         CATE_UPDATE: '/special/update',

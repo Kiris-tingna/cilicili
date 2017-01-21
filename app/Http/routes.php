@@ -1,4 +1,5 @@
 <?php
+$api = app('Dingo\Api\Routing\Router');
 
 /*
 |--------------------------------------------------------------------------
@@ -35,13 +36,29 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/index', 'FrontController@index');
     Route::get('/animate/{id}', 'FrontController@specials')->where('id', '[0-9]+'); // 合集专辑
     Route::get('/videos/{avid}', 'FrontController@videos')->where('avid', 'av[0-9]+');  // 分集视频
+    Route::get('/list/{cid}', 'FrontController@assortment')->where('cid', '[0-9]+'); // 分类页面
+
     Route::get('/search', 'FrontController@search');  // 搜索
-    // api
-    Route::post('/like/a/', 'ApiController@alike');  // 喜欢
-    Route::post('/like/v/', 'ApiController@vlike');  // 喜欢
 
     Route::get('/home', 'HomeController@index');// constotur 使用了auth中间件
     Route::any('/upload', 'KpTelloController@upload');
     Route::get('/queue', 'KpTelloController@queue');
 
+});
+
+/*
+|--------------------------------------------------------------------------
+| Api Routes
+|--------------------------------------------------------------------------
+|
+| This route group applies the api for the project
+|
+ */
+$api->version('v1', function ($api) {
+    //test
+    $api->get('/test','App\Http\Controllers\Api\V1\LikeController@test');
+
+    // has not been done
+    $api->post('/alike','App\Http\Controllers\Api\V1\LikeController@alike');
+    $api->post('/vlike','App\Http\Controllers\Api\V1\LikeController@vlike');
 });

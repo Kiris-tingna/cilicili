@@ -163,6 +163,7 @@ return [
         Bican\Roles\RolesServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Frozennode\Administrator\AdministratorServiceProvider::class,
+        Dingo\Api\Provider\LaravelServiceProvider::class,
     ],
 
     /*

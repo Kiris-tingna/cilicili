@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use View;
+use Carbon\Carbon;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
     {
         View::share('web', 'Cili.Cili');
         View::composer('timeboard', 'App\Http\Composers\TimeBoardComposer');
+        Carbon::setLocale('zh');
     }
 
     /**

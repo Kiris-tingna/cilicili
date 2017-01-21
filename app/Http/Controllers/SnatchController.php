@@ -27,4 +27,18 @@ class SnatchController extends Controller
         $this->spider->snatch($url);
         return redirect('/snatch/index');
     }
+
+    public function getSync($id)
+    {
+        return view('admin.syncsp')->with('id', $id);
+    }
+
+    public function postSync(Request $request)
+    {
+        $sid = $request->get('id');
+        $url = $request->get('url');
+
+        $this->spider->sync($sid, $url);
+        return redirect('/special/index');
+    }
 }

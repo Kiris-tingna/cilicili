@@ -87,4 +87,9 @@ class FrontController extends Controller
         return view('home.search', compact('results'));
     }
 
+    public function assortment($cid)
+    {
+        $specials = $this->cate->findBy('id', $cid)->first()->specials;
+        return view('home.assortment', compact('specials'));
+    }
 }

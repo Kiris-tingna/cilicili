@@ -60,6 +60,35 @@ class SnatchRepositories
         return true;
     }
 
+    public function sync($sid, $url)
+    {
+        $sp = Special::find($sid);
+        $this->crawler = $this->client->request('GET', $url);
+        $videos = $this->crawler->filter('.complete-list .v1-bangumi-list-part-child>a');
+        $current_sps = $sp->particles;
+
+            $videos->each(function($node , $i) use ($sid, $current_sps) {
+                if($i+1 > $current_sps)
+                {
+                    $vid = Video::firstOrCreate(array(
+                        'episode'=> $i+1,
+                        'name'  => $node->attr('title'),
+                        'special_id' => $sid,
+                        'picture_uri'=>$node->filter('.img-wrp img')->attr('src'),
+                        'played'    => 0,
+                        'commented' => 0,
+                        'liked'     =>  0,
+                        'created_at' => Carbon::now()
+                    ))->id;
+                    Video::where('id', $vid)->update(array('av' => 'av'.str_pad($vid, 5 ,"0",STR_PAD_LEFT)));
+                }
+            });
+
+            Special::where('id', $sid)->update(array('particles' => Video::where('special_id', $sid)->count()));
+
+        return true;
+    }
+
     public function registerBLSpider($url)
     {
         $this->crawler = $this->client->request('GET', $url);
