@@ -7,6 +7,7 @@ use Event;
 use Cache;
 use App\Repositories\VideoRepository;
 use App\Repositories\SpecialRepository;
+use App\Repositories\PostRepository;
 use App\Events\ViewCountsEvent;
 
 class FrontController extends Controller
@@ -20,12 +21,18 @@ class FrontController extends Controller
      */
     protected $special;
     protected $cate;
+    protected $post;
 
-    public function __construct(CategoryRepository $cate, VideoRepository $video, SpecialRepository $special)
+    public function __construct(
+        CategoryRepository $cate,
+        VideoRepository $video,
+        SpecialRepository $special,
+        PostRepository $post)
     {
         $this->cate = $cate;
         $this->video = $video;
         $this->special = $special;
+        $this->post = $post;
     }
 
     public function index()

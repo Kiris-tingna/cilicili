@@ -9,7 +9,6 @@
 namespace App\Repositories;
 use App\Repositories\Eloquent\Repository;
 use App\Category;
-use Illuminate\Container\Container as App;
 
 /**
  * Class CategoryRepository

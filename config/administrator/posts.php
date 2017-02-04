@@ -35,7 +35,9 @@ return array(
             'relationship' => 'user', //this is the name of the Eloquent relationship method!
             'select' => "(:table).name",
         ],
-
+        'votes' => [
+            'title' => '顶赞个数',
+        ],
         'created_at'=>[
             'title'=>'创建日期',
         ],
@@ -64,7 +66,10 @@ return array(
             'title' => '内容',
             'type' => 'textarea'
         ],
-        
+        'votes' => [
+            'title' => '顶赞个数',
+            'type' => 'text'
+        ],
         'user' => array(
             'type' => 'relationship',
             'title' => '作者',

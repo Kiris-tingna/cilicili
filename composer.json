@@ -15,7 +15,8 @@
         "laravelcollective/html": "5.2.*",
         "predis/predis": "*",
         "kalnoy/nestedset": "^4.2",
-        "dingo/api": "1.0.x@dev"
+        "dingo/api": "1.0.x@dev",
+        "cmgmyr/messenger": "~2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

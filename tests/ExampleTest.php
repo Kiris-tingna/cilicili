@@ -13,7 +13,12 @@ class ExampleTest extends TestCase
      */
     public function testBasicExample()
     {
-        $this->visit('/')
-             ->see('Laravel 5');
+        $this->visit('/index')
+             ->see('Cili.Cili');
+    }
+
+    public function testDatabase()
+    {
+        $this->seeInDatabase('users', ['email' => 'admin123@example.com']);
     }
 }

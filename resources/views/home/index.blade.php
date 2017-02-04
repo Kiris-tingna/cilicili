@@ -9,7 +9,7 @@
                 <div class="col-md-9">
                     <h3>{{$cate->band}}
                         <small>{{ $cate->slug }}</small>
-                        <a href="{{ url('/list', $cate->id) }}">更多</a>
+                        <a class="la-idata-more pull-right" href="{{ url('/list', $cate->id) }}">更多 <i class="fa fa-angle-right"></i></a>
                     </h3>
                     <ul class="la-idata-container">
                         @foreach($cate->specials as $sp)
@@ -25,7 +25,9 @@
                 </div>
                 <div class="col-md-3">
                     @if($k == 0)
-                        @include('timeboard')
+                        @include('components.html.timeboard')
+                    @elseif($k == 1)
+                        @include('components.html.postaside')
                     @endif
                 </div>
             </div>

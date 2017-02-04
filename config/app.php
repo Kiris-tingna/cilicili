@@ -164,6 +164,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Frozennode\Administrator\AdministratorServiceProvider::class,
         Dingo\Api\Provider\LaravelServiceProvider::class,
+        Cmgmyr\Messenger\MessengerServiceProvider::class,
     ],
 
     /*

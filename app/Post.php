@@ -9,7 +9,7 @@ class Post extends Model
     /**
      * @var array
      */
-    protected $fillable = ['title', 'topic', 'user_id'];
+    protected $fillable = ['title', 'topic', 'user_id', 'votes'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

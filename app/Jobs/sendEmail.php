@@ -17,7 +17,7 @@ class sendEmail extends Job implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @return void
+     * @param $email
      */
     public function __construct($email)
     {
