@@ -23,6 +23,59 @@ body {
 }
 
 // -------------------front --------------------------
+.la-menu {
+  width: 220px;
+  padding-top: 12px;
+  padding-bottom: 0;
+  //box-shadow: 0 6px 12px 0 rgba(0,0,0,.18);
+
+  .la-message-item{
+    line-height: 20px;
+    padding: 0 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+
+    p {
+      font-size: 12px;
+      margin: 0;
+    }
+
+    &:hover .p1 {
+      color: #ff0084;
+    }
+    .b1{
+      margin-left: 5px
+    }
+    .b2{
+      color: #555555;
+    }
+    .p2{
+      color: #cccccc;
+    }
+  }
+}
+.la-message-more {
+  background-color: #f7f7f7;
+  font-size: 12px;
+  text-align: center;
+  line-height: 30px;
+  height: 30px;
+}
+.la-message{
+  position: absolute;
+  width: auto;
+  height: 12px;
+  display: block;
+  border-radius: 6px;
+  color: #fff;
+  background-color: #fd0317;
+  padding: 1px 8px;
+  font-size: 10px;
+  line-height: 10px;
+  top: 10px;
+  right: 0px;
+}
+
 .la-ani {
   background-color: @whole-white;
   margin-top: 10px;
@@ -110,6 +163,12 @@ body {
     background-color: #f7f7fc;
     padding: 5px 20px;
     margin-bottom: 20px;
+
+    .la-fj-tit{
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
 
     p{
       font-size: 13px;

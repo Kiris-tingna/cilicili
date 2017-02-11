@@ -68,9 +68,6 @@
                                 <a href="{{ url('/special') }}">合集列表</a>
                             </li>
                             <li>
-                                <a href="notifications.html">同步合集</a>
-                            </li>
-                            <li>
                                 <a href="typography.html">Typography</a>
                             </li>
                             <li>
@@ -82,6 +79,16 @@
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-files-o fa-fw"></i>文章管理<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="{{ url('/post') }}">新增文章</a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li>
                         <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -111,17 +118,6 @@
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="blank.html">Blank Page</a>
-                            </li>
-                            <li>
-                                <a href="login.html">Login Page</a>
-                            </li>
-                        </ul>
                     </li>
                 </ul>
             </div>

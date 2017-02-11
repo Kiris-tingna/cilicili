@@ -25,6 +25,7 @@ class CategoryController extends Controller
     public function __construct(CategoryRepository $cate)
     {
         $this->cate = $cate;
+        $this->middleware('auth');
     }
 
     /**

@@ -43,10 +43,11 @@
         <div class="la-fj row">
         <h3>分集</h3>
         <ul class="la-fj-ul">
+        <?php $class = ($lists->count() > 30) ? 'col-md-3': 'col-md-6' ?>
         @foreach ($lists as $item)
-        <li class="col-md-6">
+        <li class="{{$class}}">
             <a class="la-fj-li" href="{{ action('FrontController@videos', $item->av) }}">
-                <p>第 {{ $item->episode }} 集   {{ $item->name }}</p>
+                <p class="la-fj-tit">第 {{ $item->episode }} 集   {{ $item->name }}</p>
                 <p>{{ $item->description }}</p>
             </a>
         </li>

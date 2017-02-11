@@ -16,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::share('web', 'Cili.Cili');
+        View::composer('components.html.message', 'App\Http\Composers\MessageComposer');
         View::composer('components.html.timeboard', 'App\Http\Composers\TimeBoardComposer');
         View::composer('components.html.postaside', 'App\Http\Composers\PostAsideComposer');
         Carbon::setLocale('zh');

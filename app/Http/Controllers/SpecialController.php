@@ -28,6 +28,8 @@ class SpecialController extends Controller
     {
         $this->cate = $cate;
         $this->special = $special;
+
+        $this->middleware('auth');
     }
 
     public function getIndex()

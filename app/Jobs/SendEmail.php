@@ -8,7 +8,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Mail;
 
-class sendEmail extends Job implements ShouldQueue
+class SendEmail extends Job implements ShouldQueue
 {
     use InteractsWithQueue, SerializesModels;
 

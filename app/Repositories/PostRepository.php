@@ -11,7 +11,6 @@ use App\Repositories\Eloquent\Repository;
 use App\Post;
 use Carbon\Carbon;
 use Redis;
-use Cache;
 
 class PostRepository extends Repository
 {

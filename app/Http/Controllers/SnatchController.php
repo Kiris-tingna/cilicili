@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repositories\SnatchRepositories;
+use App\Repositories\SnatchRepository;
 
 use App\Http\Requests;
 
@@ -11,9 +11,10 @@ class SnatchController extends Controller
 {
     protected $spider;
 
-    public function __construct(SnatchRepositories $spider)
+    public function __construct(SnatchRepository $spider)
     {
         $this->spider = $spider;
+        $this->middleware('auth');
     }
 
     public function getIndex()

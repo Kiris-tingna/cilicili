@@ -14,7 +14,7 @@ use Carbon\Carbon;
 use App\Special;
 use App\Video;
 
-class SnatchRepositories
+class SnatchRepository
 {
     protected $client;
     protected $crawler;

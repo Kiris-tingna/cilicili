@@ -5,6 +5,54 @@ body {
   background-color: #f8f8f8;
   margin-top: -20px;
 }
+.la-menu {
+  width: 220px;
+  padding-top: 12px;
+  padding-bottom: 0;
+}
+.la-menu .la-message-item {
+  line-height: 20px;
+  padding: 0 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.la-menu .la-message-item p {
+  font-size: 12px;
+  margin: 0;
+}
+.la-menu .la-message-item:hover .p1 {
+  color: #ff0084;
+}
+.la-menu .la-message-item .b1 {
+  margin-left: 5px;
+}
+.la-menu .la-message-item .b2 {
+  color: #555555;
+}
+.la-menu .la-message-item .p2 {
+  color: #cccccc;
+}
+.la-message-more {
+  background-color: #f7f7f7;
+  font-size: 12px;
+  text-align: center;
+  line-height: 30px;
+  height: 30px;
+}
+.la-message {
+  position: absolute;
+  width: auto;
+  height: 12px;
+  display: block;
+  border-radius: 6px;
+  color: #fff;
+  background-color: #fd0317;
+  padding: 1px 8px;
+  font-size: 10px;
+  line-height: 10px;
+  top: 10px;
+  right: 0px;
+}
 .la-ani {
   background-color: #ffffff;
   margin-top: 10px;
@@ -89,6 +137,11 @@ body {
   background-color: #f7f7fc;
   padding: 5px 20px;
   margin-bottom: 20px;
+}
+.la-fj .la-fj-li .la-fj-tit {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .la-fj .la-fj-li p {
   font-size: 13px;

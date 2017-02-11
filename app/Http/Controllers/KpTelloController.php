@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\sendEmail;
+use App\Jobs\SendEmail;
+use App\Jobs\SendMessage;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -54,6 +55,7 @@ class KpTelloController extends Controller
      */
     public function queue()
     {
-        $this->dispatch(new sendEmail('1206802260@qq.com'));
+//        $this->dispatch(new SendEmail('1206802260@qq.com'));
+        $this->dispatch(new SendMessage(2, [1,3,4], '正式测试数据主题', '网站私信功能内测'));
     }
 }

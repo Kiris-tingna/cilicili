@@ -16,6 +16,7 @@ Route::group(['middleware'=> ['web', 'auth']], function (){
     Route::controller('cate', 'CategoryController');
     Route::controller('special', 'SpecialController');
     Route::controller('snatch', 'SnatchController');
+    Route::controller('post', 'PostController');
 });
 
 /*
@@ -40,7 +41,6 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('/search', 'FrontController@search');  // 搜索
 
-    Route::get('/home', 'HomeController@index');// constotur 使用了auth中间件
     Route::any('/upload', 'KpTelloController@upload');
     Route::get('/queue', 'KpTelloController@queue');
 

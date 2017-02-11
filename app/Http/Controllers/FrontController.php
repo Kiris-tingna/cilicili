@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\CategoryRepository;
-use Event;
-use Cache;
+use App\Repositories\UserRepository;
 use App\Repositories\VideoRepository;
 use App\Repositories\SpecialRepository;
 use App\Repositories\PostRepository;
+use Event;
+use Cache;
+use Auth;
 use App\Events\ViewCountsEvent;
 
 class FrontController extends Controller
@@ -22,13 +24,16 @@ class FrontController extends Controller
     protected $special;
     protected $cate;
     protected $post;
+    protected $user;
 
     public function __construct(
+        UserRepository $user,
         CategoryRepository $cate,
         VideoRepository $video,
         SpecialRepository $special,
         PostRepository $post)
     {
+        $this->user = $user;
         $this->cate = $cate;
         $this->video = $video;
         $this->special = $special;
