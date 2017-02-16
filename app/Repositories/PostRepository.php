@@ -28,6 +28,12 @@ class PostRepository extends Repository
         return $this->model->orderBy('votes')->get();
     }
 
+    public function OtherSampleWithDates($page)
+    {
+        // 按发表时间排序文章
+        return $this->model->orderBy('created_at', 'desc')->paginate($page);
+    }
+
     public function vote($userId, $postId)
     {
         $singleArticle = $this->model->find($postId);

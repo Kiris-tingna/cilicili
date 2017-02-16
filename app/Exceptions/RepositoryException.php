@@ -1,5 +1,5 @@
 <?php
-namespace App\Repositories\Exceptions;
+namespace App\Exceptions;
 use Exception;
 
 /**

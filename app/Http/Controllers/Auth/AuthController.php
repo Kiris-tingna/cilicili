@@ -47,10 +47,6 @@ class AuthController extends Controller
         $this->middleware('guest', ['except' => [
             'logout',
             'index',
-            'animate',
-            'videos',
-            'search',
-            'like',
         ]]);
     }
 

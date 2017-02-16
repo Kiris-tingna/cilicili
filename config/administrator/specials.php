@@ -44,7 +44,7 @@ return array(
         'picture_uri' => [
             'title' => '封图地址',
             'output'=> function ($value) {
-                return '<img src="'. '/thumbs/small/'.$value.'" width = 100px>';
+                return '<img src="'.$value.'" width = 100px>';
             }
         ],
 

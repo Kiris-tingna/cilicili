@@ -90,10 +90,10 @@
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-sitemap fa-fw"></i>通知公告<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">Second Level Item</a>
+                                <a href="{{ url('/message') }}">发布公告</a>
                             </li>
                             <li>
                                 <a href="#">Second Level Item</a>
@@ -130,6 +130,7 @@
 </div>
 <!-- jQuery -->
 <script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/jquery.cookie.js') }}"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 

@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Providers\Services\UuidService;
+
 use View;
 use Carbon\Carbon;
 

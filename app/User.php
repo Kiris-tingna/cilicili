@@ -6,7 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Bican\Roles\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
 use Bican\Roles\Traits\HasRoleAndPermission;
 
-// use Illuminate\Foundation\Auth\User as Authenticatable;
+/*
+ * use Illuminate\Foundation\Auth\User as Authenticatable;
+ * the same as following `use`
+ * the usage is `class User extends Authenticatable`
+ */
+
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;

@@ -36,12 +36,21 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/animate/4') }}">合集?</a></li>
-                    <li><a href="{{ url('/search') }}">搜索</a></li>
+                    <li><a href="{{ url('/list/2') }}">新番组</a></li>
+                    <li><a href="{{ url('/list/3') }}">补番·旧番</a></li>
+                    <li><a href="{{ url('/list/4') }}">OVA</a></li>
+                    <li><a href="{{ url('/list/5') }}">补档</a></li>
 
-                    <li><a href="{{ url('/home') }}">用户中心</a></li>
-                    <li><a href="{{ url('/cate') }}">控制</a></li>
+                    <li></li>
+
                 </ul>
+
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <a href="{{ url('/search') }}">搜索</a>
+                </form>
 
                 <!-- Right Side Of Navbar -->
                 <div class="nav navbar-nav navbar-right">
@@ -56,6 +65,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/cate') }}"><i class="fa fa-btn fa-book"></i>后台控制</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>退出</a></li>
                             </ul>
                         </li>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Jobs\SendEmail;
 use App\Jobs\SendMessage;
+use Uuid;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -57,5 +58,10 @@ class KpTelloController extends Controller
     {
 //        $this->dispatch(new SendEmail('1206802260@qq.com'));
         $this->dispatch(new SendMessage(2, [1,3,4], '正式测试数据主题', '网站私信功能内测'));
+    }
+
+    public function test()
+    {
+        echo Uuid::generate(5,'test', Uuid::NS_DNS);
     }
 }

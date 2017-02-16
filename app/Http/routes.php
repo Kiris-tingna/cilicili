@@ -11,12 +11,14 @@ $api = app('Dingo\Api\Routing\Router');
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::group(['middleware'=> ['web', 'auth']], function (){
+Route::group(['middleware'=> ['web', 'auth', 'throttle:60,10']], function (){
     // 后台
+    // throttle 访问限制中间件 60 次/min 超出等待10min
     Route::controller('cate', 'CategoryController');
     Route::controller('special', 'SpecialController');
     Route::controller('snatch', 'SnatchController');
     Route::controller('post', 'PostController');
+    Route::controller('message', 'MessageController');
 });
 
 /*
@@ -38,11 +40,13 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/animate/{id}', 'FrontController@specials')->where('id', '[0-9]+'); // 合集专辑
     Route::get('/videos/{avid}', 'FrontController@videos')->where('avid', 'av[0-9]+');  // 分集视频
     Route::get('/list/{cid}', 'FrontController@assortment')->where('cid', '[0-9]+'); // 分类页面
-
+    Route::get('/page', 'FrontController@article');// 文章列表
     Route::get('/search', 'FrontController@search');  // 搜索
 
+//    Route::get('/notify', 'MessageController@notify');// 通知
     Route::any('/upload', 'KpTelloController@upload');
     Route::get('/queue', 'KpTelloController@queue');
+    Route::get('/tt', 'KpTelloController@test');
 
 });
 

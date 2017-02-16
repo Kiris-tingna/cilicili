@@ -1,5 +1,5 @@
 <?php
-namespace App\Repositories\Contracts;
+namespace App\Contracts;
 /**
  * 策略模式接口
  * Interface RepositoryInterface

@@ -1,4 +1,4 @@
-<h3>新闻资讯</h3>
+<h3>新闻资讯<a class="la-idata-more pull-right" href="{{ url('/page') }}">更多 <i class="fa fa-angle-right"></i></a></h3>
 <style>
     .la-post{
         padding: 0;

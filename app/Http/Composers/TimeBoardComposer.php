@@ -22,7 +22,7 @@ class TimeBoardComposer
 
     public function compose(View $view)
     {
-        return $view->with('board', Cache::store('redis')->remember('timeboard', 50, function () {
+        return $view->with('board', Cache::store('redis')->remember('timeboard', 1, function () {
             return $this->special->ListAllByDay();
         }));
     }

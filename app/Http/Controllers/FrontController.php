@@ -90,6 +90,15 @@ class FrontController extends Controller
         return view('home.video', compact('animate', 'lists'));
     }
 
+    public function article()
+    {
+        $posts = $this->post->OtherSampleWithDates(15);
+        return view('home.article', compact('posts'));
+    }
+    public function posts()
+    {
+    }
+
     /**
      * todo  elasticsearch
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

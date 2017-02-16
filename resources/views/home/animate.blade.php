@@ -43,7 +43,17 @@
         <div class="la-fj row">
         <h3>分集</h3>
         <ul class="la-fj-ul">
-        <?php $class = ($lists->count() > 30) ? 'col-md-3': 'col-md-6' ?>
+        <?php
+            if($lists->count() < 20) {
+                $class = 'col-md-6';
+            }
+            else if($lists->count() < 30) {
+                $class = 'col-md-4';
+            }
+            else{
+                $class = 'col-md-3';
+            }
+        ?>
         @foreach ($lists as $item)
         <li class="{{$class}}">
             <a class="la-fj-li" href="{{ action('FrontController@videos', $item->av) }}">

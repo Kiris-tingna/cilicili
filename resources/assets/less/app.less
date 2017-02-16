@@ -16,6 +16,7 @@
 body {
   font-family: MicroSoft Yahei, Sans-Serif;
 }
+
 // -------------------background ------------------
 .bg-grey {
   background-color: @whole-bg;
@@ -75,7 +76,53 @@ body {
   top: 10px;
   right: 0px;
 }
+// ----------list 页 -----------------
+.la-list-wrapper{
+  padding: 0;
+  list-style: none;
+  .has-img{
+    margin-bottom: 20px;
+  }
+  .img-wrapper{
+    display: inline;
+    width: 160px;
+    height: 90px;
+    margin-right: 14px;
+    overflow: hidden;
+    &> img{
+      width: 100%;
+    }
+  }
+  .la-list-text{
+    display: inline-block;
+    word-break: break-all;
+  }
+  .la-list-info{
+    color: #ccc;
+    font-size: 12px;
+    & > span{
+      margin-right: 20px;
+    }
+  }
+  .ll{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    height: 16px;
+  }
+  .ss{
+    font-size: 12px;
+    width: auto;
+    color: #999;
+    line-height: 18px;
+    height: 36px;
+    word-break: break-all;
+    word-wrap: break-word;
+    overflow: hidden;
+  }
+}
 
+// ---------------------animate------------------
 .la-ani {
   background-color: @whole-white;
   margin-top: 10px;
