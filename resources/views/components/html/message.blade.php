@@ -1,6 +1,7 @@
 <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-        <i class="fa fa-envelope-o" style="font-size: 16px"></i> <span class="la-message">@if($message->count() > 0) {{ $message->count() }}@endif</span>
+        <i class="fa fa-envelope-o" style="font-size: 16px"></i> <span class="la-message">
+            <?php $total = $message->count();?> @if($total> 0) {{ $total }}@endif</span>
     </a>
 
     <ul class="dropdown-menu la-menu" role="menu">

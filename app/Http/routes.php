@@ -65,4 +65,5 @@ $api->version('v1', function ($api) {
     // has not been done
     $api->post('/alike','App\Http\Controllers\Api\V1\LikeController@alike');
     $api->post('/vlike','App\Http\Controllers\Api\V1\LikeController@vlike');
+    $api->get('/resolve/{aid}/{page}/{quality}', 'App\Http\Controllers\Api\V1\VideoController@source');
 });

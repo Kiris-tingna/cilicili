@@ -22,7 +22,7 @@ class PostAsideComposer
     public function compose(View $view)
     {
         return $view->with('posts', Cache::store('redis')->remember('postaside', 2, function () {
-            return $this->post->IndexSampleWithVotes();
+            return $this->post->IndexSampleWithVotes(10);
         }));
     }
 }

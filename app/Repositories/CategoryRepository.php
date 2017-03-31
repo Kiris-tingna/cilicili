@@ -23,9 +23,13 @@ class CategoryRepository extends Repository
     {
         return Category::class;
     }
+//[
+//'specials'=> function ($query){
+//    return $query->limit(10);
+//}]
     public function IndexSampleWithCate()
     {
-        return $this->model->withDepth()->having('depth', '=', 1)->get();
+        return $this->model->withDepth()->having('depth', '=', 1)->with('specials')->get();
     }
     /**
      * @return mixed

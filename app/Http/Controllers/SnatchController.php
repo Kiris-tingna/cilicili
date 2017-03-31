@@ -42,4 +42,14 @@ class SnatchController extends Controller
         $this->spider->sync($sid, $url);
         return redirect('/special/index');
     }
+
+    public function postAddress(Request $request)
+    {
+        $sid = $request->get('id');
+        $url = $request->get('url');
+
+        $this->spider->sync($sid, $url);
+        $this->spider->address($sid, $url);
+        return redirect('/special/index');
+    }
 }

@@ -14,8 +14,8 @@
                 </div>
             </div>
 
-            <div class="">
-                <div id="youkuplayer" class="la-player-body"></div>
+            <div class="J_hook_id" data-episode-id="{{ $animate->source_uri }}">
+                <video id="bilibili" src="" controls="controls" autoplay="autoplay" class="la-player-body"></video>
             </div>
 
             <div class="la-player-footer row">
@@ -53,15 +53,25 @@
 
         </div>
     </div>
+@endsection
 
+@section('js')
+    <script type="application/javascript">
+    $(function(){
+        /**
+         * --------------- bilibili video operation --------------------
+         */
+        var BiliBiliApi = function(aid, page, quality) {
+            $.ajax({
+                url: '/api/resolve/'+aid+'/'+page+'/'+quality,
+                type: 'GET',
+                dataType: 'json',
+            }).done(function (data) {
+                $('#bilibili').attr('src', data.data)
+            })
+        }
 
-    <script type="text/javascript" src="http://player.youku.com/jsapi"></script>
-    <script type="text/javascript">
-    var player = new YKU.Player('youkuplayer',{
-        styleid: '0',
-        client_id: '0de5c9326327eda8',
-        vid: '{{ $animate->source_uri }}',
-        newPlayer: true
-    });
+        BiliBiliApi($('.J_hook_id').data('episode-id'), 1, 2);
+    })
     </script>
 @endsection

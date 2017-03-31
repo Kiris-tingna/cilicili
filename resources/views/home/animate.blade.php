@@ -4,11 +4,22 @@
 @endsection
 
 @section('content')
+    <style>
+        .la-ani-header {
+            font-size: 14px;
+            margin-top: 10px;
+            line-height: 26px;
+        }
+        .la-ani-header > a{
+            font-size: 14px;
+            text-decoration: none;
+        }
+    </style>
     <div class="bg-grey">
     <div class="container">
-
+        <div class="la-ani-header">
         {{ Html::breadcrumb($special->categories, $special) }}
-
+        </div>
         <div class="la-ani row">
             <div class="la-ani-band">
                 <img class="la-ani-image" src="{{ $special->picture_uri }}" alt="">

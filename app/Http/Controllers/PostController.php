@@ -25,7 +25,7 @@ class PostController extends Controller
         $title = $request->get('title');
         $topic = $request->get('topic');
 
-        $this->post->create(array('title'=>$title, 'topic'=>$topic, 'votes'=>0));
+        $this->post->create(array('user_id'=>1, 'title'=>$title, 'topic'=>$topic, 'votes'=>0));
         return redirect('post/index');
     }
 }

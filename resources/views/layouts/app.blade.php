@@ -88,5 +88,7 @@
     <script src="{{ asset('js/bootstrap.datepicker.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
      {{--<script src="{{ elixir('js/app.js') }}"></script> --}}
+
+    @yield('js')
 </body>
 </html>

@@ -19,6 +19,7 @@
          </li>
         @endforeach
         </ul>
+            {!! $specials->links() !!}
         </div>
 
         <div class="col-md-3">

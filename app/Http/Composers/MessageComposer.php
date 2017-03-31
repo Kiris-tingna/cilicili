@@ -22,7 +22,7 @@ class MessageComposer
 
     public function compose(View $view)
     {
-        return $view->with('message', Cache::store('redis')->remember('message:new', 10, function () {
+        return $view->with('message', Cache::store('redis')->remember('messages', 10, function () {
             return $this->user->GetAllMessage(Auth::user()->id);
         }));
     }

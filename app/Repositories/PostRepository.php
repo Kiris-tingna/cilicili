@@ -22,10 +22,10 @@ class PostRepository extends Repository
         return Post::class;
     }
 
-    public function IndexSampleWithVotes()
+    public function IndexSampleWithVotes($page)
     {
         // 按评分来排序文章
-        return $this->model->orderBy('votes')->get();
+        return $this->model->orderBy('votes')->paginate($page);
     }
 
     public function OtherSampleWithDates($page)
@@ -34,6 +34,12 @@ class PostRepository extends Repository
         return $this->model->orderBy('created_at', 'desc')->paginate($page);
     }
 
+    /**
+     * todo: use rankService refactor this
+     * @param $userId
+     * @param $postId
+     * @return bool
+     */
     public function vote($userId, $postId)
     {
         $singleArticle = $this->model->find($postId);

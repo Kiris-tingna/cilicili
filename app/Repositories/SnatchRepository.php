@@ -67,26 +67,37 @@ class SnatchRepository
         $videos = $this->crawler->filter('.complete-list .v1-bangumi-list-part-child>a');
         $current_sps = $sp->particles;
 
-            $videos->each(function($node , $i) use ($sid, $current_sps) {
-                if($i+1 > $current_sps)
-                {
-                    $vid = Video::firstOrCreate(array(
-                        'episode'=> $i+1,
-                        'name'  => $node->attr('title'),
-                        'special_id' => $sid,
-                        'picture_uri'=>$node->filter('.img-wrp img')->attr('src'),
-                        'played'    => 0,
-                        'commented' => 0,
-                        'liked'     =>  0,
-                        'created_at' => Carbon::now()
-                    ))->id;
-                    Video::where('id', $vid)->update(array('av' => 'av'.str_pad($vid, 5 ,"0",STR_PAD_LEFT)));
-                }
-            });
+        $videos->each(function ($node, $i) use ($sid, $current_sps) {
+            if ($i + 1 > $current_sps) {
+                $vid = Video::firstOrCreate(array(
+                    'episode' => $i + 1,
+                    'name' => $node->attr('title'),
+                    'special_id' => $sid,
+                    'picture_uri' => $node->filter('.img-wrp img')->attr('src'),
+                    'played' => 0,
+                    'commented' => 0,
+                    'liked' => 0,
+                    'created_at' => Carbon::now()
+                ))->id;
+                Video::where('id', $vid)->update(array('av' => 'av' . str_pad($vid, 5, "0", STR_PAD_LEFT)));
+            }
+        });
 
-            Special::where('id', $sid)->update(array('particles' => Video::where('special_id', $sid)->count()));
+        Special::where('id', $sid)->update(array('particles' => Video::where('special_id', $sid)->count()));
 
         return true;
+    }
+
+    public function address($sid, $url)
+    {
+        $this->crawler = $this->client->request('GET', $url);
+        $videos = $this->crawler->filter('.complete-list .v1-bangumi-list-part-child');
+        $videos->each(function ($node, $i) use ($sid) {
+            $infomation = json_decode($this->guzzle->request('GET',
+                'http://bangumi.bilibili.com/web_api/episode/'.$node->attr('data-episode-id').'.json')->getBody(),
+                true);
+            Video::where('episode', $i + 1)->where('special_id', $sid)->update(['source_uri'=> $infomation['result']['currentEpisode']['avId']]);
+        });
     }
 
     public function registerBLSpider($url)

@@ -95,6 +95,7 @@ class FrontController extends Controller
         $posts = $this->post->OtherSampleWithDates(15);
         return view('home.article', compact('posts'));
     }
+
     public function posts()
     {
     }
@@ -110,7 +111,7 @@ class FrontController extends Controller
 
     public function assortment($cid)
     {
-        $specials = $this->cate->findBy('id', $cid)->first()->specials;
+        $specials = $this->cate->findBy('id', $cid)->first()->specials()->paginate(10);
         return view('home.assortment', compact('specials'));
     }
 }
